@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass=CommentRepository::class)
+ * @SuppressWarnings(PHPMD)
  */
 class Comment
 {

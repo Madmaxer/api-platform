@@ -11,15 +11,15 @@ class AppFixtures extends BaseFixture
 
     public function load(ObjectManager $manager)
     {
-        $i = 0;
-        while ($i < self::COMMENT_COUNT) {
+        $increment = 0;
+        while ($increment < self::COMMENT_COUNT) {
             $comment = new Comment();
             $comment->setAuthor($this->faker->name);
             $comment->setComment($this->faker->text(255));
             $comment->setCreatedAt($this->faker->dateTime);
             $manager->persist($comment);
 
-            $i++;
+            $increment++;
         }
 
         $manager->flush();
