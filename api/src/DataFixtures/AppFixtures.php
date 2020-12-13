@@ -12,7 +12,7 @@ class AppFixtures extends BaseFixture
     public function load(ObjectManager $manager)
     {
         $i = 0;
-        while($i < self::COMMENT_COUNT) {
+        while ($i < self::COMMENT_COUNT) {
             $comment = new Comment();
             $comment->setAuthor($this->faker->name);
             $comment->setComment($this->faker->text(255));

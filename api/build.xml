@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="api-platform" default="test">
+
+    <property name="project-path" value="." override="true"/>
+    <resolvepath propertyName="vendor-dir" file="${project-path}/vendor"/>
+
+    <target name="test" depends="test-syntax, test-standards, test-phpunit"/>
+
+    <!-- Run code syntax test using PHP Parallel Lint -->
+    <target name="test-syntax">
+        <exec dir="${project-path}" command="${vendor-dir}/bin/parallel-lint src" passthru="true" checkreturn="true" output="/dev/stdout"/>
+    </target>
+
+    <!-- Run code standards test using PHP_CodeSniffer -->
+    <target name="test-standards">
+        <exec dir="${project-path}" command="${vendor-dir}/bin/phpcs -ps" passthru="true" checkreturn="true" output="/dev/stdout"/>
+    </target>
+
+    <target name="test-phpmd">
+        <exec dir="${project-path}"
+              command="${vendor-dir}/bin/phpmd ${project-path}/src text ${project-path}/phpmd.xml"
+              passthru="true"
+              checkreturn="true"
+              output="/dev/stdout"/>
+    </target>
+
+    <target name="test-phpcs">
+        <exec dir="${project-path}"
+              command="${vendor-dir}/bin/phpcs --standard=phpcs.xml -p -s"
+              passthru="true"
+              checkreturn="true"
+              output="/dev/stdout"/>
+    </target>
+
+    <target name="test-phpmd">
+        <exec dir="${project-path}"
+              command="${vendor-dir}/bin/phpmd ${project-path}/src text ${project-path}/phpmd.xml"
+              passthru="true"
+              checkreturn="true"
+              output="/dev/stdout"/>
+    </target>
+
+    <target name="test-phpunit">
+        <exec dir="${project-path}"
+              command="php bin/phpunit"
+              passthru="true"
+              checkreturn="true"
+              output="/dev/stdout"/>
+    </target>
+
+</project>

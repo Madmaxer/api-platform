@@ -1,0 +1,4 @@
+App\Entity\Comment:
+    comment_{1..10}:
+        author: <username()>
+        comment: <text()>
